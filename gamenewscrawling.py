@@ -17,6 +17,7 @@ driver = webdriver.Chrome(chromedriver, options=options)
 
 class GameNewsCrawling:
     def ruliweb(self):
+        print('Ruliweb 뉴스 스크래핑을 시작합니다.')
         url = 'https://bbs.ruliweb.com/news'
         driver.get(url)
         html_dom = driver.page_source
@@ -33,6 +34,7 @@ class GameNewsCrawling:
                 return_data.append(news_text)
                 return_data.append(element.a['href'])
 
+            print('Ruliweb 뉴스 스크래핑을 완료했습니다.')
             return return_data
 
         except TimeoutException:  # 예외 처리
@@ -40,6 +42,7 @@ class GameNewsCrawling:
 
 
     def inven(self):
+        print('Inven 뉴스 스크래핑을 시작합니다.')
         url = 'http://www.inven.co.kr/webzine/news/?hotnews=3'
         driver.get(url)
         html_dom = driver.page_source
@@ -54,6 +57,7 @@ class GameNewsCrawling:
                 return_data.append(news_text)
                 return_data.append(element.a['href'])
 
+            print('Inven 뉴스 스크래핑을 완료했습니다.')
             return return_data
 
         except TimeoutException:

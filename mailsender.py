@@ -8,6 +8,10 @@ import datetime
 
 
 class MailSender:
+    sendemail = input('발송할 이메일을 입력해주세요.')
+    apppassword = input('앱 패스워드를 입력해주세요.')
+    toemail = input('수신할 이메일을 입력해주세요.')
+
     game_news_crawling = GameNewsCrawling()
     ruliweb_news = game_news_crawling.ruliweb()
     inven_news = game_news_crawling.inven()
@@ -21,10 +25,12 @@ class MailSender:
 
     msg = MIMEText(news_msg)
     msg['Subject'] = Header(nowDatetime + ' 게임뉴스', 'utf-8')
-    msg['From'] = 'leesengwoo555@gmail.com'
-    msg['To'] = 'leesengwoo555@gmail.com'
+    msg['From'] = sendemail
+    msg['To'] = toemail
 
     with smtplib.SMTP_SSL('smtp.gmail.com') as smtp:
-        smtp.login('leesengwoo555@gmail.com', 'apppassword')
+        smtp.login(sendemail, apppassword)
         smtp.send_message(msg)
         smtp.quit()
+        
+    print('스크래핑된 뉴스를 메일로 발송했습니다.')
