@@ -15,11 +15,15 @@ class MailSender:
     game_news_crawling = GameNewsCrawling()
     ruliweb_news = game_news_crawling.ruliweb()
     inven_news = game_news_crawling.inven()
+    gamemeca_news = game_news_crawling.gamemeca()
+    igngames_news = game_news_crawling.igngame()
 
     ruliweb_newsmsg = "\n".join(ruliweb_news) + "\n"
     inven_newsmsg = "\n".join(inven_news) + "\n"
+    gamemeca_newsmsg = "\n".join(gamemeca_news) + "\n"
+    igngames_newsmsg = "\n".join(igngames_news) + "\n"
 
-    news_msg = ruliweb_newsmsg + "\n" + inven_newsmsg
+    news_msg = ruliweb_newsmsg + "\n" + inven_newsmsg + "\n" + gamemeca_newsmsg + "\n" + igngames_newsmsg
 
     nowDatetime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M') # 2020-07-25 15:21
 
